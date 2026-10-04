@@ -15,7 +15,7 @@
   <div class="background-grid" aria-hidden="true"></div>
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="#top" aria-label="Yuma Digital Service">YDS<span>.</span></a>
+      <a class="brand" href="#top" aria-label="Yuma Digital Service"><span class="brand-name">Yuma Digital Service</span><span class="brand-short">YDS<span>.</span></span></a>
       <button class="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false">☰</button>
       <nav class="nav" aria-label="Navigasi utama">
         <a href="#services">Layanan</a>
@@ -112,17 +112,34 @@
           <h2>Punya ide atau masalah digital?</h2>
           <p>Ceritakan kebutuhanmu. Kita lihat bersama apakah YDS bisa membantu.</p>
         </div>
-        <a class="button button-primary" href="mailto:hello@yds.example">Hubungi YDS <span>→</span></a>
+        <button class="button button-primary contact-trigger" type="button" data-contact-open>Hubungi YDS <span>→</span></button>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-wrap">
-      <div><a class="brand" href="#top">YDS<span>.</span></a><p>Yuma Digital Service</p></div>
+      <div><a class="brand" href="#top"><span class="brand-name">Yuma Digital Service</span><span class="brand-short">YDS<span>.</span></span></a><p>Simple. Practical. Personal.</p></div>
       <p>© 2026 Yuma Digital Service</p>
     </div>
   </footer>
+
+  <dialog class="contact-dialog" id="contactDialog" aria-labelledby="contactTitle">
+    <div class="dialog-card">
+      <button class="dialog-close" type="button" data-contact-close aria-label="Tutup">×</button>
+      <p class="eyebrow">CONTACT YDS</p>
+      <h2 id="contactTitle">Hubungi Yuma Digital Service</h2>
+      <p>Pilih cara yang paling nyaman untuk memulai pembicaraan.</p>
+      <div class="contact-options">
+        <a class="contact-option" href="https://wa.me/628114230770" target="_blank" rel="noopener noreferrer">
+          <span class="contact-icon">WA</span><span><strong>WhatsApp</strong><small>Chat langsung</small></span><span class="contact-arrow">→</span>
+        </a>
+        <a class="contact-option" href="mailto:yumaabdansyakur@gmail.com">
+          <span class="contact-icon">@</span><span><strong>Email</strong><small>yumaabdansyakur@gmail.com</small></span><span class="contact-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </dialog>
 
   <script src="js/main.js"></script>
 </body>
