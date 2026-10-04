@@ -19,3 +19,16 @@ const observer=new IntersectionObserver((entries)=>{
 },{threshold:.12});
 
 document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+const contactDialog=document.querySelector("#contactDialog");
+const contactOpeners=document.querySelectorAll("[data-contact-open]");
+const contactCloser=document.querySelector("[data-contact-close]");
+const whatsappContact=document.querySelector("#whatsappContact");
+const emailContact=document.querySelector("#emailContact");
+const waNumber=["62","8114230770"].join("");
+const emailAddress=["yumaabdansyakur","gmail.com"].join("@");
+if(whatsappContact)whatsappContact.href="https://wa.me/"+waNumber;
+if(emailContact)emailContact.href="mailto:"+emailAddress;
+contactOpeners.forEach(button=>button.addEventListener("click",()=>contactDialog?.showModal()));
+contactCloser?.addEventListener("click",()=>contactDialog?.close());
+contactDialog?.addEventListener("click",(event)=>{if(event.target===contactDialog)contactDialog.close();});
