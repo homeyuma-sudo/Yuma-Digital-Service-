@@ -1,3 +1,5 @@
+document.documentElement.classList.add("js-ready");
+
 const menuButton=document.querySelector(".menu-toggle");
 const nav=document.querySelector(".nav");
 
@@ -22,10 +24,11 @@ if("IntersectionObserver" in window){
     entries.forEach(entry=>{
       if(entry.isIntersecting){
         entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
+      }else{
+        entry.target.classList.remove("visible");
       }
     });
-  },{threshold:.12});
+  },{threshold:.14,rootMargin:"0px 0px -6% 0px"});
 
   revealElements.forEach(el=>observer.observe(el));
 }else{
