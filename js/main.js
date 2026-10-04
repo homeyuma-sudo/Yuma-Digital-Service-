@@ -7,6 +7,7 @@ if(menuButton&&nav){
     menuButton.setAttribute("aria-expanded",String(open));
     menuButton.setAttribute("aria-label",open?"Tutup menu":"Buka menu");
   });
+
   nav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{
     nav.classList.remove("open");
     menuButton.setAttribute("aria-expanded","false");
@@ -14,19 +15,35 @@ if(menuButton&&nav){
   }));
 }
 
-const observer=new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add("visible");});
-},{threshold:.12});
+const revealElements=document.querySelectorAll(".reveal");
 
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+if("IntersectionObserver" in window){
+  const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.12});
+
+  revealElements.forEach(el=>observer.observe(el));
+}else{
+  revealElements.forEach(el=>el.classList.add("visible"));
+}
 
 const contactDialog=document.querySelector("#contactDialog");
 const contactOpeners=document.querySelectorAll("[data-contact-open]");
 const contactCloser=document.querySelector("[data-contact-close]");
 
-const contactDialog=document.querySelector("#contactDialog");
-const contactOpeners=document.querySelectorAll("[data-contact-open]");
-const contactCloser=document.querySelector("[data-contact-close]");
-contactOpeners.forEach(button=>button.addEventListener("click",()=>{if(contactDialog?.showModal)contactDialog.showModal();}));
+contactOpeners.forEach(button=>{
+  button.addEventListener("click",()=>{
+    if(contactDialog?.showModal) contactDialog.showModal();
+  });
+});
+
 contactCloser?.addEventListener("click",()=>contactDialog?.close());
-contactDialog?.addEventListener("click",(event)=>{if(event.target===contactDialog)contactDialog.close();});
+
+contactDialog?.addEventListener("click",(event)=>{
+  if(event.target===contactDialog) contactDialog.close();
+});
